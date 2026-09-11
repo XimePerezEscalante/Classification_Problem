@@ -22,17 +22,14 @@ from sklearn.metrics import accuracy_score, classification_report, ConfusionMatr
 """## Cargar dataset"""
 
 df = pd.read_csv('Penguin_Species_Prediction_Dataset.csv')
-display(df)
-display(df.info())
 
 """## Identificar datos nulos"""
 
 # Identificar datos nulos
-print(df.isnull().sum ())
+print(df.isnull().sum())
 
 # Visualizar filas con datos nulos
 df_null = df[df.isnull().any(axis=1)]
-display(df_null)
 
 print(df_null.shape)
 
@@ -45,9 +42,9 @@ df_adelie = df[df['species'] == 'Adelie']
 df_chinstrap = df[df['species'] == 'Chinstrap']
 df_gentoo = df[df['species'] == 'Gentoo']
 
-#display(df_adelie)
-#display(df_chinstrap)
-#display(df_gentoo)
+# display(df_adelie)
+# display(df_chinstrap)
+# display(df_gentoo)
 
 # Crear dataframes para dividir por sexo
 
@@ -63,14 +60,14 @@ df_chinstrap_m = df_chinstrap[df_chinstrap['sex'] == 'Male']
 df_gentoo_f = df_gentoo[df_gentoo['sex'] == 'Female']
 df_gentoo_m = df_gentoo[df_gentoo['sex'] == 'Male']
 
-#display(df_adelie_m.describe())
-#display(df_adelie_f.describe())
+# display(df_adelie_m.describe())
+# display(df_adelie_f.describe())
 
-#display(df_chinstrap_m.describe())
-#display(df_chinstrap_f.describe())
+# display(df_chinstrap_m.describe())
+# display(df_chinstrap_f.describe())
 
-#display(df_gentoo_m.describe())
-#display(df_gentoo_f.describe())
+# display(df_gentoo_m.describe())
+# display(df_gentoo_f.describe())
 
 """### Histogramas por especie"""
 
@@ -201,7 +198,6 @@ median_fl_gentoo = df_gentoo['flipper_length_mm'].median()
 median_bm_gentoo = df_gentoo['body_mass_g'].median()
 
 
-
 # Adelie
 df.loc[(df['species'] == 'Adelie') & (df['culmen_length_mm'].isna()),
        'culmen_length_mm'] = df['culmen_length_mm'].fillna(median_cl_adelie)
@@ -279,7 +275,6 @@ df = df.join(sex_encoded_df)
 # Eliminar filas con el dato de sexo del pingüino faltante
 df.dropna(subset=['sex'], inplace=True)
 
-display(df.shape)
 
 """## Shuffle dataset"""
 
@@ -348,7 +343,6 @@ disp = ConfusionMatrixDisplay(
 disp.plot(cmap=plt.cm.Blues)
 plt.title("Confusion Matrix - Validation")
 plt.show()
-
 
 
 # Test
